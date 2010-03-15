@@ -2,7 +2,7 @@
 ---------------------- Unity Terrain Toolkit ----------------------
 --
 -- Unity Summer of Code 2009
--- Terrain Toolkit for Unity (Version 1.0)
+-- Terrain Toolkit for Unity (Version 1.0.1)
 -- All code by Sándor Moldán.
 --
 -- TerrainToolkitEditor.cs
