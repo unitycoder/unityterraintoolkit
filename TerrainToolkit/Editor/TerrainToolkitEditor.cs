@@ -3,7 +3,7 @@
 --
 -- Unity Summer of Code 2009
 -- Terrain Toolkit for Unity (Version 1.0.1)
--- All code by S·ndor Mold·n.
+-- All code by S√°ndor Mold√°n.
 --
 -- TerrainToolkitEditor.cs
 --
@@ -39,16 +39,16 @@ public class TerrainToolkitEditor : Editor {
 		}
 		Terrain terComponent = (Terrain) terrain.GetComponent(typeof(Terrain));
 		if (!terrain.guiSkin) {
-			terrain.guiSkin = (GUISkin) Resources.LoadAssetAtPath("Assets/TerrainToolkit/Editor/Resources/TerrainErosionEditorSkin.guiskin", typeof(GUISkin));
-			terrain.createIcon = (Texture2D) Resources.LoadAssetAtPath("Assets/TerrainToolkit/Editor/Resources/createIcon.png", typeof(Texture2D));
-			terrain.erodeIcon = (Texture2D) Resources.LoadAssetAtPath("Assets/TerrainToolkit/Editor/Resources/erodeIcon.png", typeof(Texture2D));
-			terrain.textureIcon = (Texture2D) Resources.LoadAssetAtPath("Assets/TerrainToolkit/Editor/Resources/textureIcon.png", typeof(Texture2D));
-			terrain.mooreIcon = (Texture2D) Resources.LoadAssetAtPath("Assets/TerrainToolkit/Editor/Resources/mooreIcon.png", typeof(Texture2D));
-			terrain.vonNeumannIcon = (Texture2D) Resources.LoadAssetAtPath("Assets/TerrainToolkit/Editor/Resources/vonNeumannIcon.png", typeof(Texture2D));
-			terrain.mountainsIcon = (Texture2D) Resources.LoadAssetAtPath("Assets/TerrainToolkit/Editor/Resources/mountainsIcon.png", typeof(Texture2D));
-			terrain.hillsIcon = (Texture2D) Resources.LoadAssetAtPath("Assets/TerrainToolkit/Editor/Resources/hillsIcon.png", typeof(Texture2D));
-			terrain.plateausIcon = (Texture2D) Resources.LoadAssetAtPath("Assets/TerrainToolkit/Editor/Resources/plateausIcon.png", typeof(Texture2D));
-			terrain.defaultTexture = (Texture2D) Resources.LoadAssetAtPath("Assets/TerrainToolkit/Textures/default.jpg", typeof(Texture2D));
+			terrain.guiSkin = (GUISkin) AssetDatabase.LoadAssetAtPath("Assets/TerrainToolkit/TerrainToolkit/Editor/Resources/TerrainErosionEditorSkin.guiskin", typeof(GUISkin));
+			terrain.createIcon = (Texture2D) AssetDatabase.LoadAssetAtPath("Assets/TerrainToolkit/TerrainToolkit/Editor/Resources/createIcon.png", typeof(Texture2D));
+			terrain.erodeIcon = (Texture2D) AssetDatabase.LoadAssetAtPath("Assets/TerrainToolkit/TerrainToolkit/Editor/Resources/erodeIcon.png", typeof(Texture2D));
+			terrain.textureIcon = (Texture2D) AssetDatabase.LoadAssetAtPath("Assets/TerrainToolkit/TerrainToolkit/Editor/Resources/textureIcon.png", typeof(Texture2D));
+			terrain.mooreIcon = (Texture2D) AssetDatabase.LoadAssetAtPath("Assets/TerrainToolkit/TerrainToolkit/Editor/Resources/mooreIcon.png", typeof(Texture2D));
+			terrain.vonNeumannIcon = (Texture2D) AssetDatabase.LoadAssetAtPath("Assets/TerrainToolkit/TerrainToolkit/Editor/Resources/vonNeumannIcon.png", typeof(Texture2D));
+			terrain.mountainsIcon = (Texture2D) AssetDatabase.LoadAssetAtPath("Assets/TerrainToolkit/TerrainToolkit/Editor/Resources/mountainsIcon.png", typeof(Texture2D));
+			terrain.hillsIcon = (Texture2D) AssetDatabase.LoadAssetAtPath("Assets/TerrainToolkit/TerrainToolkit/Editor/Resources/hillsIcon.png", typeof(Texture2D));
+			terrain.plateausIcon = (Texture2D) AssetDatabase.LoadAssetAtPath("Assets/TerrainToolkit/TerrainToolkit/Editor/Resources/plateausIcon.png", typeof(Texture2D));
+			terrain.defaultTexture = (Texture2D) AssetDatabase.LoadAssetAtPath("Assets/TerrainToolkit/TerrainToolkit/Textures/default.jpg", typeof(Texture2D));
 		}
 		if (!terrain.presetsInitialised) {
 			terrain.addPresets();
@@ -160,15 +160,13 @@ public class TerrainToolkitEditor : Editor {
 				buttonRect.x = buttonRect.width / 2 - 100;
 				buttonRect.width = 200;
 				buttonRect.height = 18;
-				GUI.skin = terrain.guiSkin;
+				//GUI.skin = terrain.guiSkin; // FIXME: didnt work
 				if (GUI.Button(buttonRect, "Generate Voronoi Features")) {
-					// Undo...
 					Terrain ter = (Terrain) terrain.GetComponent(typeof(Terrain));
-					if (ter == null) {
-						return;
-					}
+					if (ter == null) return;
+
 					TerrainData terData = ter.terrainData;
-					Undo.RegisterUndo(terData, "Terrain Generator");
+					//Undo.RecordObject(terData, "Terrain Generator");
 					TerrainToolkit.GeneratorProgressDelegate generatorProgressDelegate = new TerrainToolkit.GeneratorProgressDelegate(updateGeneratorProgress);
 					terrain.generateTerrain(generatorProgressDelegate);
 					EditorUtility.ClearProgressBar();
@@ -221,15 +219,13 @@ public class TerrainToolkitEditor : Editor {
 				buttonRect.x = buttonRect.width / 2 - 100;
 				buttonRect.width = 200;
 				buttonRect.height = 18;
-				GUI.skin = terrain.guiSkin;
+				//GUI.skin = terrain.guiSkin;
 				if (GUI.Button(buttonRect, "Generate Fractal Terrain")) {
-					// Undo...
 					Terrain ter = (Terrain) terrain.GetComponent(typeof(Terrain));
-					if (ter == null) {
-						return;
-					}
+					if (ter == null) return;
+
 					TerrainData terData = ter.terrainData;
-					Undo.RegisterUndo(terData, "Terrain Generator");
+					//Undo.RecordObject(terData, "Terrain Generator");
 					TerrainToolkit.GeneratorProgressDelegate generatorProgressDelegate = new TerrainToolkit.GeneratorProgressDelegate(updateGeneratorProgress);
 					terrain.generateTerrain(generatorProgressDelegate);
 					EditorUtility.ClearProgressBar();
@@ -290,15 +286,13 @@ public class TerrainToolkitEditor : Editor {
 				buttonRect.x = buttonRect.width / 2 - 100;
 				buttonRect.width = 200;
 				buttonRect.height = 18;
-				GUI.skin = terrain.guiSkin;
+				//GUI.skin = terrain.guiSkin;
 				if (GUI.Button(buttonRect, "Generate Perlin Terrain")) {
-					// Undo...
 					Terrain ter = (Terrain) terrain.GetComponent(typeof(Terrain));
-					if (ter == null) {
-						return;
-					}
+					if (ter == null) return;
+
 					TerrainData terData = ter.terrainData;
-					Undo.RegisterUndo(terData, "Terrain Generator");
+					//Undo.RecordObject(terData, "Terrain Generator");
 					TerrainToolkit.GeneratorProgressDelegate generatorProgressDelegate = new TerrainToolkit.GeneratorProgressDelegate(updateGeneratorProgress);
 					terrain.generateTerrain(generatorProgressDelegate);
 					EditorUtility.ClearProgressBar();
@@ -322,15 +316,13 @@ public class TerrainToolkitEditor : Editor {
 				buttonRect.x = buttonRect.width / 2 - 100;
 				buttonRect.width = 200;
 				buttonRect.height = 18;
-				GUI.skin = terrain.guiSkin;
+				//GUI.skin = terrain.guiSkin;
 				if (GUI.Button(buttonRect, "Smooth Terrain")) {
-					// Undo...
 					Terrain ter = (Terrain) terrain.GetComponent(typeof(Terrain));
-					if (ter == null) {
-						return;
-					}
+					if (ter == null) return;
+
 					TerrainData terData = ter.terrainData;
-					Undo.RegisterUndo(terData, "Smooth Terrain");
+					//Undo.RecordObject(terData, "Smooth Terrain");
 					TerrainToolkit.GeneratorProgressDelegate generatorProgressDelegate = new TerrainToolkit.GeneratorProgressDelegate(updateGeneratorProgress);
 					terrain.generateTerrain(generatorProgressDelegate);
 					EditorUtility.ClearProgressBar();
@@ -358,15 +350,14 @@ public class TerrainToolkitEditor : Editor {
 				buttonRect.x = buttonRect.width / 2 - 100;
 				buttonRect.width = 200;
 				buttonRect.height = 18;
-				GUI.skin = terrain.guiSkin;
+				//GUI.skin = terrain.guiSkin;
 				if (GUI.Button(buttonRect, "Normalise Terrain")) {
-					// Undo...
+
 					Terrain ter = (Terrain) terrain.GetComponent(typeof(Terrain));
-					if (ter == null) {
-						return;
-					}
+					if (ter == null) return;
+
 					TerrainData terData = ter.terrainData;
-					Undo.RegisterUndo(terData, "Normalise Terrain");
+					//Undo.RecordObject(terData, "Normalise Terrain");
 					TerrainToolkit.GeneratorProgressDelegate generatorProgressDelegate = new TerrainToolkit.GeneratorProgressDelegate(updateGeneratorProgress);
 					terrain.generateTerrain(generatorProgressDelegate);
 					EditorUtility.ClearProgressBar();
@@ -396,7 +387,7 @@ public class TerrainToolkitEditor : Editor {
 			EditorGUILayout.EndHorizontal();
 			EditorGUILayout.Separator();
 			EditorGUILayout.BeginHorizontal();
-			GUI.skin = terrain.guiSkin;
+			//GUI.skin = terrain.guiSkin;
 			GUILayout.Label("Filters");
 			GUI.skin = null;
 			EditorGUILayout.EndHorizontal();
@@ -449,22 +440,20 @@ public class TerrainToolkitEditor : Editor {
 				buttonRect.x = buttonRect.width / 2 - 100;
 				buttonRect.width = 200;
 				buttonRect.height = 18;
-				GUI.skin = terrain.guiSkin;
+				//GUI.skin = terrain.guiSkin;
 				if (GUI.Button(buttonRect, "Apply thermal erosion")) {
-					// Undo
 					Terrain ter = (Terrain) terrain.GetComponent(typeof(Terrain));
-					if (ter == null) {
-						return;
-					}
+					if (ter == null) return;
+
 					TerrainData terData = ter.terrainData;
-					Undo.RegisterUndo(terData, "Terrain Erosion");
+					//Undo.RecordObject(terData, "Terrain Erosion");
 					// Start time...
 					DateTime startTime = DateTime.Now;
 					TerrainToolkit.ErosionProgressDelegate erosionProgressDelegate = new TerrainToolkit.ErosionProgressDelegate(updateErosionProgress);
 					terrain.erodeAllTerrain(erosionProgressDelegate);
 					EditorUtility.ClearProgressBar();
 					TimeSpan processTime = DateTime.Now - startTime;
-					Debug.Log("Process complete in: "+processTime.ToString());
+					Debug.Log("Process complete in: "+processTime.Seconds.ToString()+"s");
 					GUIUtility.ExitGUI();
 				}
 				GUI.skin = null;
@@ -655,22 +644,20 @@ public class TerrainToolkitEditor : Editor {
 				buttonRect.x = buttonRect.width / 2 - 100;
 				buttonRect.width = 200;
 				buttonRect.height = 18;
-				GUI.skin = terrain.guiSkin;
+				//GUI.skin = terrain.guiSkin;
 				if (GUI.Button(buttonRect, "Apply hydraulic erosion")) {
-					// Undo
 					Terrain ter = (Terrain) terrain.GetComponent(typeof(Terrain));
-					if (ter == null) {
-						return;
-					}
+					if (ter == null) return;
+
 					TerrainData terData = ter.terrainData;
-					Undo.RegisterUndo(terData, "Terrain Erosion");
+					//Undo.RecordObject(terData, "Terrain Erosion");
 					// Start time...
 					DateTime startTime = DateTime.Now;
 					TerrainToolkit.ErosionProgressDelegate erosionProgressDelegate = new TerrainToolkit.ErosionProgressDelegate(updateErosionProgress);
 					terrain.erodeAllTerrain(erosionProgressDelegate);
 					EditorUtility.ClearProgressBar();
 					TimeSpan processTime = DateTime.Now - startTime;
-					Debug.Log("Process complete in: "+processTime.ToString());
+					Debug.Log("Process complete in: "+processTime.Seconds.ToString()+"s");
 					GUIUtility.ExitGUI();
 				}
 				GUI.skin = null;
@@ -729,22 +716,20 @@ public class TerrainToolkitEditor : Editor {
 				buttonRect.x = buttonRect.width / 2 - 100;
 				buttonRect.width = 200;
 				buttonRect.height = 18;
-				GUI.skin = terrain.guiSkin;
+				//GUI.skin = terrain.guiSkin;
 				if (GUI.Button(buttonRect, "Apply tidal erosion")) {
-					// Undo
 					Terrain ter = (Terrain) terrain.GetComponent(typeof(Terrain));
-					if (ter == null) {
-						return;
-					}
+					if (ter == null) return;
+
 					TerrainData terData = ter.terrainData;
-					Undo.RegisterUndo(terData, "Terrain Erosion");
+					//Undo.RecordObject(terData, "Terrain Erosion");
 					// Start time...
 					DateTime startTime = DateTime.Now;
 					TerrainToolkit.ErosionProgressDelegate erosionProgressDelegate = new TerrainToolkit.ErosionProgressDelegate(updateErosionProgress);
 					terrain.erodeAllTerrain(erosionProgressDelegate);
 					EditorUtility.ClearProgressBar();
 					TimeSpan processTime = DateTime.Now - startTime;
-					Debug.Log("Process complete in: "+processTime.ToString());
+					Debug.Log("Process complete in: "+processTime.Seconds.ToString()+"s");
 					GUIUtility.ExitGUI();
 				}
 				GUI.skin = null;
@@ -811,22 +796,20 @@ public class TerrainToolkitEditor : Editor {
 				buttonRect.x = buttonRect.width / 2 - 100;
 				buttonRect.width = 200;
 				buttonRect.height = 18;
-				GUI.skin = terrain.guiSkin;
+				//GUI.skin = terrain.guiSkin;
 				if (GUI.Button(buttonRect, "Apply wind erosion")) {
-					// Undo
 					Terrain ter = (Terrain) terrain.GetComponent(typeof(Terrain));
-					if (ter == null) {
-						return;
-					}
+					if (ter == null) return;
+
 					TerrainData terData = ter.terrainData;
-					Undo.RegisterUndo(terData, "Terrain Erosion");
+					//Undo.RecordObject(terData, "Terrain Erosion");
 					// Start time...
 					DateTime startTime = DateTime.Now;
 					TerrainToolkit.ErosionProgressDelegate erosionProgressDelegate = new TerrainToolkit.ErosionProgressDelegate(updateErosionProgress);
 					terrain.erodeAllTerrain(erosionProgressDelegate);
 					EditorUtility.ClearProgressBar();
 					TimeSpan processTime = DateTime.Now - startTime;
-					Debug.Log("Process complete in: "+processTime.ToString());
+					Debug.Log("Process complete in: "+processTime.Seconds.ToString()+"s");
 					GUIUtility.ExitGUI();
 				}
 				GUI.skin = null;
@@ -856,7 +839,7 @@ public class TerrainToolkitEditor : Editor {
 			EditorGUILayout.Separator();
 			float mouseX;
 			EditorGUILayout.BeginHorizontal();
-			GUI.skin = terrain.guiSkin;
+			//GUI.skin = terrain.guiSkin;
 			GUILayout.Label("Texture Slope");
 			GUI.skin = null;
 			EditorGUILayout.EndHorizontal();
@@ -1043,9 +1026,9 @@ public class TerrainToolkitEditor : Editor {
 			foreach (SplatPrototype splatPrototype in terrain.splatPrototypes) {
 				Rect textureRect = EditorGUILayout.BeginHorizontal();
 				if (nTextures == 0) {
-					splatPrototype.texture = EditorGUILayout.ObjectField("Cliff texture", splatPrototype.texture, typeof(Texture2D)) as Texture2D;
+					splatPrototype.texture = EditorGUILayout.ObjectField("Cliff texture", splatPrototype.texture, typeof(Texture2D), false) as Texture2D;
 				} else {
-					splatPrototype.texture = EditorGUILayout.ObjectField("Texture "+nTextures, splatPrototype.texture, typeof(Texture2D)) as Texture2D;
+					splatPrototype.texture = EditorGUILayout.ObjectField("Texture "+nTextures, splatPrototype.texture, typeof(Texture2D), false) as Texture2D;
 				}
 				GUI.skin = terrain.guiSkin;
 				textureRect.x += 146;
@@ -1157,13 +1140,11 @@ public class TerrainToolkitEditor : Editor {
 		}
 		if (Event.current.shift) {
 			if (!terrain.isBrushPainting) {
-				// Undo...
 				Terrain ter = (Terrain) terrain.GetComponent(typeof(Terrain));
-				if (ter == null) {
-					return;
-				}
+				if (ter == null) return;
+
 				TerrainData terData = ter.terrainData;
-				Undo.RegisterUndo(terData, "Terrain Erosion Brush");
+				//Undo.RecordObject(terData, "Terrain Erosion Brush");
 			}
 			terrain.isBrushPainting = true;
 		} else {
