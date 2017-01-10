@@ -1,6 +1,6 @@
 # unityterraintoolkit
 
-Terrain toolkit updated to Unity 5.2
+Terrain toolkit updated to Unity 5.5
 
 # Original readme
 "The Terrain Toolkit project was created by Sándor Moldán as part of the Unity Summer of Code 2009.
