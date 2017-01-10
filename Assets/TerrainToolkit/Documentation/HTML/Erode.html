@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" >
+	<head>
+		<title>Terrain Toolkit</title>
+		<link rel="stylesheet" type="text/css" href="index.css" />
+	</head>
+	<body class="main">
+		<div id="container">
+			<div id="header">
+				<h1>Terrain Toolkit</h1>
+				<p>Unity Summer of Code 2009</p>
+			</div>
+			<div id="navigation">
+				<ul>
+					<li><a href="index.html" target="_self">Home</a></li>
+					<li class="divider"></li>
+					<li><a href="Create.html" target="_self">Create</a></li>
+					<li class="divider"></li>
+					<li><a class="section" href="Erode.html" target="_self">Erode</a></li>
+					<li class="divider"></li>
+					<li><a href="Texture.html" target="_self">Texture</a></li>
+					<li class="divider"></li>
+					<li><a href="Advanced.html" target="_self">Advanced</a></li>
+					<li class="divider"></li>
+					<li><a href="APIReference.html" target="_self">API Reference</a></li>
+					<li class="divider"></li>
+					<li><a href="Support.html" target="_self">Support</a></li>
+					<li class="divider"></li>
+				</ul>
+			</div>
+			<div id="content">				<h2>Erode</h2>
+				<h3>Overview</h3>
+				<p>The Terrain Toolkit includes a number of forms of erosion which can either be applied to the entire terrain object either as a filter, or in some cases directly to an area of the terrain using brushes.</p>
+				<div id="article">
+					<h3>Brushes</h3>
+					<p>The following erosion types can be applied directly to the terrain object using brushes:</p>
+					<ul>
+						<li>Thermal Erosion</li>
+						<li>Hydraulic Erosion (Fast)</li>
+						<li>Tidal Erosion</li>
+					</ul>
+					<p><strong>Note:</strong> As brushes apply erosion in single iteration, other erosion types cannot be applied with brushes as they require multiple iterations to generate meaningful results.</p>
+					<p id="hint"><strong>Hint:</strong> Use the Thermal Erosion Brush and Hydraulic Erosion Brush <strong>presets</strong> for best results.</p>
+					<p>To use a brush, select an appropriate erosion type and turn the brush <strong>on</strong> in the inspector. <strong>Brushes are applied by holding down the SHIFT key.</strong> This is a temporary measure to circumvent an issue with mouse events in the Unity Editor, and will be corrected in a future release of the Terrain Toolkit.</p>
+					<p>Brushes have a number of settings which can be modified to alter the manner in which erosion is applied to the terrain object.</p>
+					<h4>Brush size [float]</h4>
+					<p>The diameter of the brush in world units.</p>
+					<h4>Opacity [float]</h4>					<p>The opacity of the brush at the centre. This is a floating point number in the range 0.0 - 1.0, where 0.0 means the brush has no effect, and 1.0 means the brush is applied at full effect.</p>
+					<h4>Softness [float]</h4>
+					<p>The softness of the brush. This is a floating point number in the range 0.0 - 1.0, where 0.0 is a hard brush and 1.0 is a soft brush.</p>
+				</div>
+				<div id="article">
+					<div id="articleText">
+						<h3>Thermal Erosion</h3>
+						<ul>
+							<li><strong>Type:</strong> Filter/Brush</li>							<li><strong>Approach:</strong> Single layer fast erosion (height only)</li>							<li><strong>Difference maps:</strong> Yes, optional in brush mode</li>
+						</ul>						<p>Thermal erosion removes material from areas with a slope greater than the minimum slope and deposits it further down the slope. This tends to smooth and flatten inclines in the terrain.</p>
+						<p id="hint"><strong>Hint:</strong> A <strong>preset</strong> can be used to automatically set all of the properties for this filter.</p>						<h4>Iterations [int]</h4>						<p>The number of times this filter is applied. Not applicable to brushes.</p>						<h4>Minimum slope [float]</h4>						<p>Only points where the slope is greater than this amount are effected by erosion. Expressed in degrees in the range from 0.0 to 90.0</p>						<h4>Falloff [float]</h4>
+						<p>The effects of erosion are blended out towards zero over this range. Expressed in a range from 0.0 (no falloff) to 1.0 (maximum falloff).</p>
+					</div>
+					<div id="articleImage">
+						<img src="images/thermal.jpg" />
+						<p>A terrain heightmap eroded by thermal erosion.</p>
+					</div>
+				</div>
+				<div id="article">
+					<div id="articleText">
+						<h3>Hydraulic Erosion (Fast)</h3>
+						<ul>
+							<li><strong>Type:</strong> Filter/Brush</li>							<li><strong>Approach:</strong> Single layer fast erosion (height only)</li>							<li><strong>Difference maps:</strong> Yes, optional in brush mode</li>						</ul>						<p>Hydraulic erosion removes material from areas with a slope less than the maximum slope and deposits it further down the slope. This tends to steepen inclines in the terrain and further smooth and flatten other areas.</p>
+						<p id="hint"><strong>Hint:</strong> A <strong>preset</strong> can be used to automatically set all of the properties for this filter.</p>						<h4>Iterations [int]</h4>						<p>The number of times this filter is applied. Not applicable to brushes.</p>						<h4>Maximum slope [float]</h4>						<p>Only points where the slope is less than this amount are effected by erosion. Expressed in degrees in the range from 0.0 to 90.0</p>						<h4>Falloff [float]</h4>
+						<p>The effects of erosion are blended out towards zero over this range. Expressed in a range from 0.0 (no falloff) to 1.0 (maximum falloff).</p>
+					</div>
+					<div id="articleImage">
+						<img src="images/fast_hydraulic.jpg" />
+						<p>A terrain heightmap eroded by fast hydraulic erosion.</p>
+					</div>
+				</div>
+				<div id="article">
+					<div id="articleText">
+						<h3>Hydraulic Erosion (Full)</h3>						<ul>
+							<li><strong>Type:</strong> Filter</li>							<li><strong>Approach:</strong> 3 layer erosion (height, water, sediment)</li>							<li><strong>Difference maps:</strong> Yes</li>						</ul>
+						<p>Full hydraulic erosion is a simplified simulation the water cycle, where material is sissolved by rainfall. Water carrying the dissolved material is moved over the terrain based on the slope, then deposited as the water is evaporated again.</p>
+						<p id="hint"><strong>Hint:</strong> A <strong>preset</strong> can be used to automatically set all of the properties for this filter.</p>
+						<p id="hint"><strong>Hint:</strong> Water flows poorly over very noisy terrain. Try using <strong>Thermal Erosion</strong> first to smooth the terrain before applying this filter.</p>						<h4>Iterations [int]</h4>						The number of times this filter is applied. Not applicable to brushes.</p>						<h4>Rainfall [float]</h4>						<p>The amount of water added to the system as precipitation per iteration. This value should generally be kept very low.</p>						<h4>Evaporation [float]</h4>						<p>The amount of water removed from the system per iteration. When water is evaporated, it leaves behind sedimentary deposits if the the amount of remaining water after evaporation is insufficient to contain the amount of sediment at that point.</p>						<h4>Solubility [float]</h4>						<p>The ratio of material that is dissolved by water, proportional to the amount of water at that point.</p>						<h4>Saturation [float]</h4>						<p>The maximum ratio of dissolved material that can be suspended in water, proportional to the amount of water at that point.</p>
+					</div>
+					<div id="articleImage">
+						<img src="images/full_hydraulic.jpg" />
+						<p>A terrain heightmap eroded by full hydraulic erosion.</p>
+					</div>
+				</div>
+				<div id="article">
+					<div id="articleText">
+						<h3>Hydraulic Erosion (Velocity)</h3>						<ul>
+							<li><strong>Type:</strong> Filter</li>							<li><strong>Approach:</strong> 4 layer erosion (height, water, velocity, sediment)</li>							<li><strong>Difference maps:</strong> Yes</li>
+						</ul>
+						<p>Velocity hydraulic erosion is similar to full hydraulic erosion, except that the movement of water in the system is used to generate a velocity map. Velocity increases water flow influenced by both slope and momentum, carrying dissolved material with it. The velocity map can also be used to simulated the effects of downcutting - creating a carved and weathered terrain.</p>
+						<p id="hint"><strong>Hint:</strong> A <strong>preset</strong> can be used to automatically set all of the properties for this filter.</p>
+						<p id="hint"><strong>Hint:</strong> Water flows poorly over very noisy terrain. Try using <strong>Thermal Erosion</strong> first to smooth the terrain before applying this filter.</p>						<h4>Iterations [int]</h4>						<p>The number of times this filter is applied. Not applicable to brushes.</p>						<h4>Rainfall [float]</h4>						<p>The amount of water added to the system as precipitation per iteration. This value should generally be kept very low.</p>						<h4>Evaporation [float]</h4>						<p>The amount of water removed from the system per iteration. When water is evaporated, it leaves behind sedimentary deposits if the the amount of remaining water after evaporation is insufficient to contain the amount of sediment at that point.</p>
+						<h4>Solubility [float]</h4>						<p>The ratio of material that is dissolved by water, proportional to the amount of water at that point.</p>						<h4>Saturation [float]</h4>						<p>The maximum ratio of dissolved material that can be suspended in water, proportional to the amount of water at that point.</p>						<h4>Velocity [float]</h4>						<p>A global multiplier for the velocity of the water flow in the system. Could also be considered to be a gravity variable.</p>						<h4>Momentum [float]</h4>						<p>The amount of velocity transferred into neighbouring cells by moving water.</p>						<h4>Entropy [float]</h4>						<p>The amount of velocity removed from the system due to loss of kinetic energy such as friction, heat, etc.</p>
+						<h4>Downcutting [float]</h4>						<p>The amount of additional material removed per iteration due to weathering in areas where water is flowing with a high velocity.</p>
+					</div>
+					<div id="articleImage">
+						<img src="images/velocity_hydraulic.jpg" />
+						<p>A terrain heightmap eroded by velocity hydraulic erosion.</p>
+					</div>				</div>
+				<div id="article">
+					<div id="articleText">						<h3>Tidal Erosion</h3>
+						<ul>
+							<li><strong>Type:</strong> Filter/Brush</li>							<li><strong>Approach:</strong> Single layer fast erosion (height only)</li>							<li><strong>Difference maps:</strong> No</li>						</ul>						<p>Tidal erosion applies smoothing at the chosen sea level, except in areas where the slope exceeds a given value. This simulates the erosive action of waves around a shoreline and creates beaches.</p>
+						<p><strong>Note:</strong> When the tidal erosion panel is selected, a gizmo box will appear in the scene window showing both the current <strong>Sea level</strong> (blue) and <strong>Tidal range</strong> (white).</p>
+						<p id="hint"><strong>Hint:</strong> A <strong>preset</strong> can be used to automatically set all of the properties for this filter.</p>
+						<p><strong>Note:</strong> Presets for this filter will not affect the value of <strong>Sea level</strong>.</p>						<h4>Iterations [int]</h4>						<p>The number of times this filter is applied. Not applicable to brushes.</p>						<h4>Sea level [float]</h4>						<p>The altitude of the sea level. This is the point at which the greatest tidal erosion will occur. Expressed as a value of world units on the y-axis.</p>						<h4>Tidal range [float]</h4>						<p>The range above and below the sea level which is affected by tidal erosion. The effects of erosion are blended out towards zero over this range in both directions. Expressed as a value of world units on the y-axis.</p>						<h4>Cliff limit [float]</h4>						<p>Only points where the slope is less than this amount are effected by tidal erosion. This maintains the appearance of cliffs adjacent to bodies of water.</p>
+					</div>
+					<div id="articleImage">
+						<img src="images/tidal.jpg" />
+						<p>A terrain heightmap eroded by tidal erosion.</p>
+					</div>				</div>
+				<div id="article">
+					<div id="articleText">					<h3>Wind Erosion</h3>						<ul>
+							<li><strong>Type:</strong> Filter</li>
+							<li><strong>Approach:</strong> 3 layer erosion (height, velocity, suspended material)</li>
+							<li><strong>Difference maps:</strong> Yes</li>
+						</ul>
+						<p>Wind erosion is an <u>experimental</u> erosion filter. Material will be lifted from areas exposed to the wind, carried in the wind direction and deposited when the effects of gravity and entropy make it impossible for the particles to maintain lift. Smoothing can also be applied to areas exposed to the wind.</p>
+						<p id="hint"><strong>Hint:</strong> A <strong>preset</strong> can be used to automatically set all of the properties for this filter.</p>
+						<h4>Iterations [int]</h4>						<p>The number of times this filter is applied.</p>
+						<h4>Direction [float]</h4>
+						<p>The direction of the wind in degrees. This is a floating point number in the range 0.0 - 360.0</p>
+						<h4>Force [float]</h4>
+						<p>The strength of the wind.</p>
+						<h4>Lift [float]</h4>
+						<p>The amount of material removed by wind in each iteration proportional to the velocity of the wind at that point.</p>
+						<h4>Gravity [float]</h4>
+						<p>The proportion of suspended material that is dropped per iteration due to the effects of gravity.</p>
+						<h4>Capacity [float]</h4>
+						<p>The maximum amount of material that can be suspended at any point.</p>
+						<h4>Entropy [float]</h4>
+						<p>The amount of velocity removed from the system due to loss of kinetic energy such as friction, heat, etc.</p>
+						<h4>Smoothing [float]</h4>
+						<p>The degree to which areas facing the wind direction are smoothed due to the effects of wind erosion and particulate abrasion.</p>
+					</div>
+					<div id="articleImage">
+						<img src="images/wind.jpg" />
+						<p>A terrain heightmap eroded by wind erosion.</p>
+					</div>
+				</div>
+				<div id="article"><!-- --></div>
+			</div>
+			<div id="superFooter">
+				<div id="column">
+					<h3>Terrain Toolkit</h3>
+					<ul>
+						<li><a href="index.html" target="_self">Home</a></li>
+						<li><a href="Support.html" target="_self">Support</a></li>
+					</ul>
+				</div>
+				<div id="column">
+					<h3>Manual</h3>
+					<ul>
+						<li><a href="Create.html" target="_self">Create</a></li>						<li><a href="Erode.html" target="_self">Erode</a></li>						<li><a href="Texture.html" target="_self">Texture</a></li>
+						<li><a href="Advanced.html" target="_self">Advanced</a></li>
+					</ul>
+				</div>
+				<div id="column">
+					<h3>&nbsp;</h3>
+					<ul>
+						<li><a href="APIReference.html" target="_self">API Reference</a></li>
+					</ul>
+				</div>
+				<div id="column">
+				</div>
+			</div>
+			<div id="footer">
+				<a href="http://sixtimesnothing.wordpress.com/" target="_blank"><div id="sixTimesNothingLogo"></div></a>
+			</div>
+		</div>
+	</body>
+</html>

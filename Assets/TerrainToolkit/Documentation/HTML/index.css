@@ -1,0 +1,346 @@
+@charset "UTF-8";
+
+/* ---------------------------------------------------------------- BODY */
+
+body {
+	font: 100% Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	background: #111111;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	color: #111111;
+}
+
+/* ---------------------------------------------------------------- CONTAINERS */
+
+.main #container {
+	width: 960px;
+	text-align: left;
+	margin: 0 auto;
+}
+
+.main #feature {
+	font-size: 10px;
+	margin: 0px;
+	padding: 0px;
+	width: 955px;
+	height: 15px;
+	background-image: url(images/mainFeature.jpg);
+	background-repeat: no-repeat;
+	display: block;
+	text-align: left;
+	padding-top: 225px;
+	padding-left: 5px;
+	color: #FFFFFF;
+}
+
+.main #header {
+	margin: 0px;
+	padding: 0px;
+	width: 920px;
+	height: 55px;
+	padding-top: 35px;
+	padding-left: 40px;
+	background-image: url(images/gradient1.jpg);
+	background-repeat: repeat-x;
+	display: block;
+}
+
+.main #navigation {
+	margin: 0px;
+	padding: 0px;
+	width: 960px;
+	height: 30px;
+	background-image: url(images/gradient3.jpg);
+	background-repeat: repeat-x;
+	display: block;
+}
+
+.main #content {
+	margin: 0px;
+	background: #FFFFFF;
+	padding-left: 40px;
+	padding-right: 40px;
+	padding-top: 10px;
+	padding-bottom: 40px;
+}
+
+.main #article {
+	clear: both;
+	background: #FFFFFF;
+	margin: 0px;
+	padding: 0px;
+	width: 880px;
+	display: block;
+}
+
+.main #articleText {
+	float: left;
+	background: #FFFFFF;
+	margin: 0px;
+	padding: 0px;
+	width: 520px;
+	padding-bottom: 20px;
+	display: block;
+}
+
+.main #articleImage {
+	text-align: center;
+	float: left;
+	margin: 0px;
+	padding: 0px;
+	width: 320px;
+	margin-top: 10px;
+	padding-top: 60px;
+	padding-left: 40px;
+	padding-right: 40px;
+	margin-right: -40px;
+	padding-bottom: 20px;
+	background-image: url(images/gradientArticle.jpg);
+	background-repeat: repeat-x;
+	background-position: top;
+	display: block;
+}
+
+/* ---------------------------------------------------------------- SUPER FOOTER */
+
+.main #superFooter {
+	clear: both;
+	margin: 0px;
+	padding: 0px;
+	width: 960px;
+	height: 160px;
+	padding-top: 1px;
+	padding-bottom: 1px;
+	display: block;
+	background: #000000;
+}
+
+.main #column {
+	float: left;
+	margin: 0px;
+	padding: 0px;
+	width: 220px;
+	height: 160px;
+	display: block;
+	padding-left: 20px;
+	background-image: url(images/gradientH.jpg);
+	background-repeat: repeat-y;
+}
+
+.main #column h3 {
+	color: #BBBBBB;
+	padding-bottom: 8px;
+}
+
+.main #column li {
+	margin: 0;
+	padding: 0;
+	padding-bottom: 3px;
+	list-style-type: none;
+}
+
+/* ---------------------------------------------------------------- FOOTER */
+
+.main #footer {
+	clear: both;
+	margin: 0px;
+	padding: 0px;
+	width: 953px;
+	height: 24px;
+	display: block;
+	padding-top: 37px;
+	padding-right: 7px;
+	background-image: url(images/footerStrip.jpg);
+	background-repeat: repeat-x;
+}
+
+.main #sixTimesNothingLogo {
+	float: right;
+	margin: 0px;
+	padding: 0px;
+	width: 284px;
+	height: 16px;
+	display: block;
+	background-image: url(images/sixTimesNothingLogo.jpg);
+	background-repeat: no-repeat;
+}
+
+/* ---------------------------------------------------------------- NAVIGATION */
+
+.main #navigation ul {
+	margin: 0;
+	padding: 0;
+}
+
+.main #navigation li {
+	float: left;
+	margin: 0px;
+	padding: 0px;
+	width: 135px;
+	height: 30px;
+	display: block;
+	background-repeat: repeat-x;
+	list-style-type: none;
+}
+
+.main #navigation a:link, .main #navigation a:visited {
+	background-image: url(images/gradient3.jpg);
+	text-decoration: none;
+	color: #0093d5;
+	width: 135px;
+	height: 22px;
+	font-size: 11px;
+	display: block;
+	text-align: center;
+	font-weight: bold;
+	padding-top: 8px;
+}
+
+.main #navigation a:hover, .main #navigation a:active {
+	background-image: url(images/gradient4.jpg);
+	text-decoration: none;
+	color: #0093d5;
+}
+
+.main #navigation a.section {
+	background-image: url(images/gradient4.jpg);
+	color: #FFFFFF;
+}
+
+.main #navigation li.divider {
+	float: left;
+	margin: 0px;
+	padding: 0px;
+	width: 2px;
+	height: 30px;
+	display: block;
+	background-repeat: no-repeat;
+	list-style-type: none;
+	background-image: url(images/gradientDiv.jpg);
+	
+}
+
+/* ---------------------------------------------------------------- TEXT */
+
+.main h1 {
+	margin: 0px;
+	padding: 0px;
+	font-size: 22px;
+	font-weight: bold;
+	color: #444444;
+}
+
+.main h2 {
+	margin: 0px;
+	padding: 0px;
+	padding-top: 20px;
+	font-size: 18px;
+	font-weight: bold;
+	color: #165470;
+}
+
+.main h3 {
+	margin: 0px;
+	padding: 0px;
+	padding-top: 15px;
+	padding-bottom: 10px;
+	font-size: 13px;
+	font-weight: bold;
+	color: #111111;
+}
+
+.main #article h3 {
+	color: #165470;
+	font-size: 15px;
+	margin-left: -40px;
+	margin-right: -40px;
+	padding-left: 40px;
+	height: 15px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	padding-top: 25px;
+	background-image: url(images/gradientArticle.jpg);
+	background-repeat: repeat-x;
+}
+
+.main #article h4 {
+	margin: 0px;
+	padding: 0px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	font-size: 12px;
+	font-weight: bold;
+	color: #111111;
+}
+
+.main h4 {
+	margin: 0px;
+	padding: 0px;
+	padding-top: 8px;
+	font-size: 12px;
+	font-weight: bold;
+	color: #111111;
+}
+
+.main p {
+	margin: 0px;
+	padding: 0px;
+	padding-bottom: 10px;
+	font-size: 12px;
+}
+
+.main #example {
+	padding-left: 20px;
+	font: 100% Courier, "Courier New", fixed-width;
+	font-size: 14px;
+}
+
+.main #hint {
+	padding: 10px;
+	font-size: 13px;
+	color: #165470;
+}
+
+.main ul {
+	margin: 0;
+	padding: 0;
+	padding-bottom: 10px;
+}
+
+.main li {
+	color: #444444;
+	margin: 0;
+	padding: 0;
+	padding-bottom: 7px;
+	padding-left: 10px;
+	list-style-type: none;
+}
+
+.main ul.subList {
+	padding-top: 7px;
+	padding-bottom: 0px;
+}
+
+.main a:link, .main a:visited {
+	text-decoration: none;
+	color: #0093d5;
+}
+
+.main a:hover, .main a:active {
+	text-decoration: underline;
+}
+
+.main a.external {
+	padding-right: 15px;
+	background-image: url(images/externalLink.jpg);
+	background-repeat: no-repeat;
+	background-position: right;
+}
+
+.main img {
+	border: 1px solid #BBBBBB;
+}
+
+/* ---------------------------------------------------------------- END */

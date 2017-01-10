@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" >
+	<head>
+		<title>Terrain Toolkit</title>
+		<link rel="stylesheet" type="text/css" href="index.css" />
+	</head>
+	<body class="main">
+		<div id="container">
+			<div id="header">
+				<h1>Terrain Toolkit</h1>
+				<p>Unity Summer of Code 2009</p>
+			</div>
+			<div id="navigation">
+				<ul>
+					<li><a class="section" href="index.html" target="_self">Home</a></li>
+					<li class="divider"></li>
+					<li><a href="Create.html" target="_self">Create</a></li>
+					<li class="divider"></li>
+					<li><a href="Erode.html" target="_self">Erode</a></li>
+					<li class="divider"></li>
+					<li><a href="Texture.html" target="_self">Texture</a></li>
+					<li class="divider"></li>
+					<li><a href="Advanced.html" target="_self">Advanced</a></li>
+					<li class="divider"></li>
+					<li><a href="APIReference.html" target="_self">API Reference</a></li>
+					<li class="divider"></li>
+					<li><a href="Support.html" target="_self">Support</a></li>
+					<li class="divider"></li>
+				</ul>
+			</div>
+			<div id="feature">This landscape was created entirely within Unity using the Terrain Toolkit.</div>
+			<div id="content">				<h2>Terrain Toolkit</h2>
+				<h3>Overview</h3>
+				<p>The Terrain Toolkit project was created by S&aacute;ndor Mold&aacute;n as part of the Unity Summer of Code 2009.</p>
+				<p>The objective of the project was to develop a toolset for the Unity Editor which would streamline and improve the workflow involved in creating terrains for games. The result is the <strong>Terrain Toolkit</strong> component - an integrated solution for terrain generation in the Unity game engine.</p>
+				<p>The toolset is divided into three areas - terrain generation, erosion and texturing - accessible in the <a href="Create.html" target="_self">Create</a>, <a href="Erode.html" target="_self">Erode</a> and <a href="Texture.html" target="_self">Texture</a> panels.</p>
+				<h3>The toolkit contains:</h3>
+				<ul>
+					<li>6 different erosion filters (thermal, tidal, wind and 3 types of hydraulic erosion).</li>
+					<li>3 'generators' that use Voronoi, cloud fractal and Perlin noise algorithms to create base terrain.</li>
+					<li>Some useful tools that allow the terrain object to be smoothed or normalised.</li>
+					<li>A procedural terrain texturing tool.</p>
+				</ul>
+				<p>All of these features are provided both as filters which can be applied in the Unity Editor and as fully documented <a href="APIReference.html" target="_self">API</a> methods which enables Unity artists and developers to procedurally generate, filters and texture terrain objects at runtime through their own scripts.</p>
+				<p>Additionally - thermal, fast-hydraulic and tidal erosion filters can also be applied directly to the terrain object using brushes in the Unity Editor.</p>				<h3>Contents</h3>				<ul>					<li><strong>Manual</strong>
+						<ul class="subList">							<li><a href="Create.html" target="_self">Create</a></li>							<li><a href="Erode.html" target="_self">Erode</a></li>								<li><a href="Texture.html" target="_self">Texture</a></li>
+							<li><a href="Advanced.html" target="_self">Advanced</a></li>
+						</ul>
+					</li>					<li><a href="APIReference.html" target="_self">API Reference</a></li>
+					<li><a href="Support.html" target="_self">Support</a></li>
+				</ul>
+				<h3>Installation instructions:</h3>
+				<p>Open the Unity project you wish to use the Terrain Toolkit in and double click <em>"TerrainToolkit_v1.0.unitypackage"</em> to import it into your project. You may need to unzip it first.</p>
+				<h3>Quick start guide:</h3>
+				<p>Attach the <strong>TerrainToolkit</strong> component to any Unity Terrain object either by dragging and dropping the script onto the terrain object or by selecting it through the Component/Scripts menu.</p>
+				<p>The <a href="Create.html" target="_self">Create</a> tab includes a number of tools for generating terrain heightmaps, plus some simple filters for smoothing and normalising terrain objects.</p>
+				<p>The <a href="Erode.html" target="_self">Erode</a> tab contains a number of tools which apply various form of erosion to terrain objects. Erosion can be applied either as a filter, or in some cases can be painted directly onto the terrain object with a brush.</p>
+				<p>The brush tools appear in the lower half of the panel. Turn the brush on to start using it. You can modify the size, opacity and softness of the brush in the panel.</p>
+				<p>The <a href="Texture.html" target="_self">Texture</a> tab contains a tool which procedurally textures the terrain object based on the height and slope of the terrain.</p>
+				<h3>Acknowledgements</h3>
+				<p>Thanks to <a class="external" href="http://aras-p.info" target="_blank">Aras Pranckevičius</a>, my mentor at Unity Technologies and the rest of the Unity staff for their support during this project.</p>
+				<p>Also, thanks to <a class="external" href="http://digitseven.com" target="_blank">Daniel Greenheck</a> for allowing me to use his Perlin noise class, and to <a class="external" href="http://www.intelegance.net" target="_blank">Jim George</a> for his implementation of the Diamond-Square algorithm.</p>
+			</div>
+			<div id="superFooter">
+				<div id="column">
+					<h3>Terrain Toolkit</h3>
+					<ul>
+						<li><a href="index.html" target="_self">Home</a></li>
+						<li><a href="Support.html" target="_self">Support</a></li>
+					</ul>
+				</div>
+				<div id="column">
+					<h3>Manual</h3>
+					<ul>
+						<li><a href="Create.html" target="_self">Create</a></li>						<li><a href="Erode.html" target="_self">Erode</a></li>						<li><a href="Texture.html" target="_self">Texture</a></li>
+						<li><a href="Advanced.html" target="_self">Advanced</a></li>
+					</ul>
+				</div>
+				<div id="column">
+					<h3>&nbsp;</h3>
+					<ul>
+						<li><a href="APIReference.html" target="_self">API Reference</a></li>
+					</ul>
+				</div>
+				<div id="column">
+				</div>
+			</div>
+			<div id="footer">
+				<a href="http://sixtimesnothing.wordpress.com/" target="_blank"><div id="sixTimesNothingLogo"></div></a>
+			</div>
+		</div>
+	</body>
+</html>

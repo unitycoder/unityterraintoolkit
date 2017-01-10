@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" >
+	<head>
+		<title>Terrain Toolkit</title>
+		<link rel="stylesheet" type="text/css" href="index.css" />
+	</head>
+	<body class="main">
+		<div id="container">
+			<div id="header">
+				<h1>Terrain Toolkit</h1>
+				<p>Unity Summer of Code 2009</p>
+			</div>
+			<div id="navigation">
+				<ul>
+					<li><a href="index.html" target="_self">Home</a></li>
+					<li class="divider"></li>
+					<li><a href="Create.html" target="_self">Create</a></li>
+					<li class="divider"></li>
+					<li><a href="Erode.html" target="_self">Erode</a></li>
+					<li class="divider"></li>
+					<li><a href="Texture.html" target="_self">Texture</a></li>
+					<li class="divider"></li>
+					<li><a href="Advanced.html" target="_self">Advanced</a></li>
+					<li class="divider"></li>
+					<li><a class="section" href="APIReference.html" target="_self">API Reference</a></li>
+					<li class="divider"></li>
+					<li><a href="Support.html" target="_self">Support</a></li>
+					<li class="divider"></li>
+				</ul>
+			</div>
+			<div id="content">
+				<h2><a href="APIReference.html" target="_self">TerrainToolkit</a>.VelocityHydraulicErosion</h2>				<p>Method</p>
+				<p><br />function <strong>VelocityHydraulicErosion</strong>(<strong>iterations</strong> : int, <strong>rainfall</strong> : float, <strong>evaporation</strong> : float, <strong>solubility</strong> : float, <strong>saturation</strong> : float, <strong>velocity</strong> : float, <strong>momentum</strong> : float, <strong>entropy</strong> : float, <strong>downcutting</strong> : float) : <strong>void</strong></p>				<h3>Description</h3>				<p>Performs velocity hydraulic erosion on the terrain object over a number of <strong>iterations</strong>.</p>
+				<p>Velocity hydraulic erosion works similarly to full hydraulic erosion except that it is influenced by a velocity field.</p>
+				<p>Each iteration, an amount of water equal to <strong>rainfall</strong> is added to the system as precipitation per iteration. An amount of material equal to <strong>solubility</strong> and proportional to both the amount of water and the current velocity at that point is dissolved up to a maximum of <strong>saturation</strong>. Velocity is added at each point proportional to the slope of the terrain at that point and the <strong>velocity</strong> value. An amount of velocity is transferred into neighbouring cells by moving water equal to <strong>momentum</strong>. The water flows downhill through the system, carrying any dissoved sediment with it.</p>
+				<p>At the end of each iteration an amount of water equal to <strong>evaporation</strong> is removed from the system. When water is evaporated, it leaves behind sedimentary deposits if the the amount of remaining water after evaporation is insufficient to contain the amount of sediment at that point. Also, an amount of velocity defined by <strong>entropy</strong> is removed from the system.</p>
+				<p>Each iteration, an amount of additional material proportional to <strong>downcutting</strong> and the current velocity at that point is removed due to weathering.</p>
+				<h3>Returns</h3>
+				<p>Nothing.</p>
+				<h3>Example</h3>
+				<p id="example">var go : GameObject = GameObject.Find("Terrain");<br />				go.GetComponent("TerrainToolkit").VelocityHydraulicErosion(25, 0.01, 0.5, 0.01, 0.2, 20.0, 1.0, 0.0, 0.1);</p>
+			</div>
+			<div id="superFooter">
+				<div id="column">
+					<h3>Generators</h3>
+					<ul>						<li><a href="VoronoiGenerator.html" target="_self">VoronoiGenerator</a></li>						<li><a href="FractalGenerator.html" target="_self">FractalGenerator</a></li>
+						<li><a href="PerlinGenerator.html" target="_self">PerlinGenerator</a></li>
+						<li><a href="FeatureType.html" target="_self">FeatureType</a></li>
+					</ul>
+				</div>
+				<div id="column">
+					<h3>Filters</h3>
+					<ul>						<li><a href="SmoothTerrain.html" target="_self">SmoothTerrain</a></li>						<li><a href="NormaliseTerrain.html" target="_self">NormaliseTerrain</a></li>
+					</ul>
+				</div>
+				<div id="column">
+					<h3>Erosion</h3>
+					<ul>
+						<li><a href="FastThermalErosion.html" target="_self">FastThermalErosion</a></li>						<li><a href="FastHydraulicErosion.html" target="_self">FastHydraulicErosion</a></li>							<li><a href="FullHydraulicErosion.html" target="_self">FullHydraulicErosion</a></li>
+						<li><a href="VelocityHydraulicErosion.html" target="_self">VelocityHydraulicErosion</a></li>						<li><a href="TidalErosion.html" target="_self">TidalErosion</a></li>
+						<li><a href="WindErosion.html" target="_self">WindErosion</a></li>
+					</ul>
+				</div>
+				<div id="column">
+					<h3>Texturing</h3>
+					<ul>						<li><a href="TextureTerrain.html" target="_self">TextureTerrain</a></li>
+					</ul>
+				</div>
+			</div>
+			<div id="superFooter">
+				<div id="column">
+					<h3>Terrain Toolkit</h3>
+					<ul>
+						<li><a href="index.html" target="_self">Home</a></li>
+						<li><a href="Support.html" target="_self">Support</a></li>
+					</ul>
+				</div>
+				<div id="column">
+					<h3>Manual</h3>
+					<ul>
+						<li><a href="Create.html" target="_self">Create</a></li>						<li><a href="Erode.html" target="_self">Erode</a></li>						<li><a href="Texture.html" target="_self">Texture</a></li>
+						<li><a href="Advanced.html" target="_self">Advanced</a></li>
+					</ul>
+				</div>
+				<div id="column">
+					<h3>&nbsp;</h3>
+					<ul>
+						<li><a href="APIReference.html" target="_self">API Reference</a></li>
+					</ul>
+				</div>
+				<div id="column">
+				</div>
+			</div>
+			<div id="footer">
+				<a href="http://sixtimesnothing.wordpress.com/" target="_blank"><div id="sixTimesNothingLogo"></div></a>
+			</div>
+		</div>
+	</body>
+</html>

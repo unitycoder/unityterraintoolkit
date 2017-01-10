@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" >
+	<head>
+		<title>Terrain Toolkit</title>
+		<link rel="stylesheet" type="text/css" href="index.css" />
+	</head>
+	<body class="main">
+		<div id="container">
+			<div id="header">
+				<h1>Terrain Toolkit</h1>
+				<p>Unity Summer of Code 2009</p>
+			</div>
+			<div id="navigation">
+				<ul>
+					<li><a href="index.html" target="_self">Home</a></li>
+					<li class="divider"></li>
+					<li><a href="Create.html" target="_self">Create</a></li>
+					<li class="divider"></li>
+					<li><a href="Erode.html" target="_self">Erode</a></li>
+					<li class="divider"></li>
+					<li><a href="Texture.html" target="_self">Texture</a></li>
+					<li class="divider"></li>
+					<li><a href="Advanced.html" target="_self">Advanced</a></li>
+					<li class="divider"></li>
+					<li><a class="section" href="APIReference.html" target="_self">API Reference</a></li>
+					<li class="divider"></li>
+					<li><a href="Support.html" target="_self">Support</a></li>
+					<li class="divider"></li>
+				</ul>
+			</div>
+			<div id="content">
+				<h2><a href="APIReference.html" target="_self">TerrainToolkit</a>.TextureTerrain</h2>				<p>Method</p>
+				<p><br />function <strong>TextureTerrain</strong>(<strong>slopeStops</strong> : float[], <strong>heightStops</strong> : float[], <strong>textures</strong> : Texture2D[]) : <strong>void</strong></p>				<h3>Description</h3>				<p>Procedurally textures the terrain object by height and slope. Note that <strong>slopeStops</strong> must contain 2 stops and <strong>heightStops</strong> must contain 2 stops for each height-assigned texture after the first (i.e. not including the slope-assigned texture or the first height-assigned texture) as per the example below. The <strong>textures</strong> array contains a list of all of the textures to be assigned to the terrain object. The slope-assigned texture is <u>always</u> the first Texture2D item in the <strong>textures</strong> array.</p>
+				<p>e.g. For 4 textures there must be 2 slope stops, 4 height stops and 4 textures.</p>
+				<p><strong>Note:</strong> The procedural terrain texturing tool is limited to 1 slope-assigned texture and between 1 and 5 height-assigned textures.</p>
+				<p>See the <a href="Texture.html" target="_self">Texture</a> page for more information about this tool.</p>
+				<h3>Returns</h3>
+				<p>Nothing.</p>
+				<h3>Example</h3>
+				<p><strong>Note:</strong> This example assumes that cliffTexture, sandTexture, grassTexture and rockTexture are assigned Texture2D variables</p>
+				<p id="example">var go : GameObject = GameObject.Find("Terrain");<br />				var slopeStops : float[] = [20.0, 50.0];<br />				var heightStops : float[] = [0.2, 0.4, 0.6, 0.8];<br />
+				var textures : Texture2D[] = [cliffTexture, sandTexture, grassTexture, rockTexture];<br />				go.GetComponent("TerrainToolkit").TextureTerrain(slopeStops, heightStops, textures);</p>
+			</div>
+			<div id="superFooter">
+				<div id="column">
+					<h3>Generators</h3>
+					<ul>						<li><a href="VoronoiGenerator.html" target="_self">VoronoiGenerator</a></li>						<li><a href="FractalGenerator.html" target="_self">FractalGenerator</a></li>
+						<li><a href="PerlinGenerator.html" target="_self">PerlinGenerator</a></li>
+						<li><a href="FeatureType.html" target="_self">FeatureType</a></li>
+					</ul>
+				</div>
+				<div id="column">
+					<h3>Filters</h3>
+					<ul>						<li><a href="SmoothTerrain.html" target="_self">SmoothTerrain</a></li>						<li><a href="NormaliseTerrain.html" target="_self">NormaliseTerrain</a></li>
+					</ul>
+				</div>
+				<div id="column">
+					<h3>Erosion</h3>
+					<ul>
+						<li><a href="FastThermalErosion.html" target="_self">FastThermalErosion</a></li>						<li><a href="FastHydraulicErosion.html" target="_self">FastHydraulicErosion</a></li>							<li><a href="FullHydraulicErosion.html" target="_self">FullHydraulicErosion</a></li>
+						<li><a href="VelocityHydraulicErosion.html" target="_self">VelocityHydraulicErosion</a></li>						<li><a href="TidalErosion.html" target="_self">TidalErosion</a></li>
+						<li><a href="WindErosion.html" target="_self">WindErosion</a></li>
+					</ul>
+				</div>
+				<div id="column">
+					<h3>Texturing</h3>
+					<ul>						<li><a href="TextureTerrain.html" target="_self">TextureTerrain</a></li>
+					</ul>
+				</div>
+			</div>
+			<div id="superFooter">
+				<div id="column">
+					<h3>Terrain Toolkit</h3>
+					<ul>
+						<li><a href="index.html" target="_self">Home</a></li>
+						<li><a href="Support.html" target="_self">Support</a></li>
+					</ul>
+				</div>
+				<div id="column">
+					<h3>Manual</h3>
+					<ul>
+						<li><a href="Create.html" target="_self">Create</a></li>						<li><a href="Erode.html" target="_self">Erode</a></li>						<li><a href="Texture.html" target="_self">Texture</a></li>
+						<li><a href="Advanced.html" target="_self">Advanced</a></li>
+					</ul>
+				</div>
+				<div id="column">
+					<h3>&nbsp;</h3>
+					<ul>
+						<li><a href="APIReference.html" target="_self">API Reference</a></li>
+					</ul>
+				</div>
+				<div id="column">
+				</div>
+			</div>
+			<div id="footer">
+				<a href="http://sixtimesnothing.wordpress.com/" target="_blank"><div id="sixTimesNothingLogo"></div></a>
+			</div>
+		</div>
+	</body>
+</html>

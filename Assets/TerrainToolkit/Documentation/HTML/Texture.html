@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" >
+	<head>
+		<title>Terrain Toolkit</title>
+		<link rel="stylesheet" type="text/css" href="index.css" />
+	</head>
+	<body class="main">
+		<div id="container">
+			<div id="header">
+				<h1>Terrain Toolkit</h1>
+				<p>Unity Summer of Code 2009</p>
+			</div>
+			<div id="navigation">
+				<ul>
+					<li><a href="index.html" target="_self">Home</a></li>
+					<li class="divider"></li>
+					<li><a href="Create.html" target="_self">Create</a></li>
+					<li class="divider"></li>
+					<li><a href="Erode.html" target="_self">Erode</a></li>
+					<li class="divider"></li>
+					<li><a class="section" href="Texture.html" target="_self">Texture</a></li>
+					<li class="divider"></li>
+					<li><a href="Advanced.html" target="_self">Advanced</a></li>
+					<li class="divider"></li>
+					<li><a href="APIReference.html" target="_self">API Reference</a></li>
+					<li class="divider"></li>
+					<li><a href="Support.html" target="_self">Support</a></li>
+					<li class="divider"></li>
+				</ul>
+			</div>
+			<div id="content">				<h2>Texture</h2>
+				<h3>Overview</h3>
+				<p>The Terrain Toolkit includes a procedural terrain texturing tool which automatically textures the terrain object using the <strong>slope</strong> and <strong>altitude</strong> of the terrain to determine which texture will be used.</p>
+				<p>The tool uses <strong>'stops'</strong> to define the slope or altitude where each texture starts and ends - similar to the way gradients are edited in some graphics software. Textures are automatically blended between stops.</p>
+				<p>Stops can either be set numerically, or by dragging the stop handles in the interface.</p>
+				<div id="article">
+					<div id="articleText">
+						<h3>1. Selecting textures</h3>
+						<p>The textures used by the procedural terrain texturing tool can be added, deleted or changed both using the interface provided in the Texture panel, or as normally done in the <a class="external" href="http://unity3d.com/support/documentation/ScriptReference/Terrain.html" target="_blank">Terrain</a> component in the Terrain/Paint Texture panel.</p>
+						<p>Click the 'Add Texture' button to add more textures (maximum of six). To assign a texture, drag a texture image from the 'Project' folder onto one of the texture icons. To delete a texture, click the delete ('x') button next to it.</p>
+						<p>The procedural terrain texturing tool supports a total of <strong>six textures</strong> - one 'cliff' texture which is applied to steep areas, and five further textures which are applied to terrain at different heights.</p>
+					</div>
+					<div id="articleImage">
+						<img src="images/textures.jpg" />
+						<p>Selecting terrain textures in the inspector.</p>
+					</div>
+				</div>
+				<div id="article">
+					<div id="articleText">
+						<h3>2. Setting slope stops</h3>
+						<p>All values for slope stops are in degrees and must be in the range 0 - 90 degrees.</p>
+						<p>The example to the rights shows the cliff texture being applied at minimum where the slope is 20 degrees and at maximum where the slope is 50 degrees. Areas where the slope is less than 20 degrees will have no cliff texture, areas where the slope is greater than 50 degrees will have only the cliff texture.</p>
+						<h4>Slope start [float]</h4>
+						<p>The slope at which <strong>Cliff texture</strong> will start to appear.</p>
+						<h4>Slope end [float]</h4>
+						<p>The slope at which <strong>Cliff texture</strong> will appear fully.</p>
+						<h4>Cliff texture [Texture2D]</h4>
+						<p>The texture used for steep areas. Suitable for rock and cliff textures.</p>
+					</div>
+					<div id="articleImage">
+						<img src="images/slope_stops.jpg" />
+						<p>Setting slope stops in the inspector.</p>
+					</div>
+				</div>
+				<div id="article">
+					<div id="articleText">
+						<h3>3. Setting altitude stops</h3>
+						<p>All values for altitude stops are defined as floating point numbers in the range 0.0 - 1.0, where 0.0 is the minimum height of the terrain object and 1.0 is the maximum height.</p>
+						<p>The example to the right shows three height textures evenly distributed over the height range of the terrain.</p>
+						<p><!-- --></p>
+						<p>For the <strong>first</strong> texture:</p>
+						<h4>Texture 1 end [float]</h4>
+						<p>The point at which first texture begins to blend into the next texture. Also, this texture appears fully between 0.0 and this point.</p>
+						<p><strong>Hint:</strong> Use textures suitable for low altitudes, such as sand, gravel, dirt or grass.</p>
+						<p><!-- --></p>
+						<p>For <strong>intermediate</strong> textures:</p>
+						<h4>Texture 1 + n start [float]</h4>
+						<p>The point at which the previous texture stops blending into the next texture, and this texture appears fully.</p>
+						<h4>Texture 1 + n end [float]</h4>
+						<p>The point at which the current texture begins to blend into the next one.</p>
+						<p><strong>Hint:</strong> Use textures suitable for medium altitudes, such as grass or dirt.</p>
+						<p><!-- --></p>
+						<p>For the <strong>last</strong> texture:</p>
+						<h4>Texture N start [float]</h4>
+						<p>The point at which the second last stops blending into the last texture, and the last texture appears fully. Also, this texture appears fully between this point and 1.0</p>
+						<p><strong>Hint:</strong> Use textures suitable for high altitudes, such as rock or snow.</p>
+					</div>
+					<div id="articleImage">
+						<img src="images/altitude_stops.jpg" />
+						<p>Setting altitude stops in the inspector.</p>
+					</div>
+				</div>
+				<div id="article">
+					<h3>4. Apply procedural texture</h3>
+					<p>Once the slope and altitude stops have been set to the desired values, simply click the "Apply procedural texture" button.</p>
+				</div>
+			</div>
+			<div id="superFooter">
+				<div id="column">
+					<h3>Terrain Toolkit</h3>
+					<ul>
+						<li><a href="index.html" target="_self">Home</a></li>
+						<li><a href="Support.html" target="_self">Support</a></li>
+					</ul>
+				</div>
+				<div id="column">
+					<h3>Manual</h3>
+					<ul>
+						<li><a href="Create.html" target="_self">Create</a></li>						<li><a href="Erode.html" target="_self">Erode</a></li>						<li><a href="Texture.html" target="_self">Texture</a></li>
+						<li><a href="Advanced.html" target="_self">Advanced</a></li>
+					</ul>
+				</div>
+				<div id="column">
+					<h3>&nbsp;</h3>
+					<ul>
+						<li><a href="APIReference.html" target="_self">API Reference</a></li>
+					</ul>
+				</div>
+				<div id="column">
+				</div>
+			</div>
+			<div id="footer">
+				<a href="http://sixtimesnothing.wordpress.com/" target="_blank"><div id="sixTimesNothingLogo"></div></a>
+			</div>
+		</div>
+	</body>
+</html>

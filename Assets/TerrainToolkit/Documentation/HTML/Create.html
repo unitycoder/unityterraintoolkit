@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" >
+	<head>
+		<title>Terrain Toolkit</title>
+		<link rel="stylesheet" type="text/css" href="index.css" />
+	</head>
+	<body class="main">
+		<div id="container">
+			<div id="header">
+				<h1>Terrain Toolkit</h1>
+				<p>Unity Summer of Code 2009</p>
+			</div>
+			<div id="navigation">
+				<ul>
+					<li><a href="index.html" target="_self">Home</a></li>
+					<li class="divider"></li>
+					<li><a class="section" href="Create.html" target="_self">Create</a></li>
+					<li class="divider"></li>
+					<li><a href="Erode.html" target="_self">Erode</a></li>
+					<li class="divider"></li>
+					<li><a href="Texture.html" target="_self">Texture</a></li>
+					<li class="divider"></li>
+					<li><a href="Advanced.html" target="_self">Advanced</a></li>
+					<li class="divider"></li>
+					<li><a href="APIReference.html" target="_self">API Reference</a></li>
+					<li class="divider"></li>
+					<li><a href="Support.html" target="_self">Support</a></li>
+					<li class="divider"></li>
+				</ul>
+			</div>
+			<div id="content">				<h2>Create</h2>
+				<h3>Overview</h3>
+				<p>The Terrain Toolkit includes a number of generators for creating random terrain, plus some useful smoothing and normalising filters.</p>
+				<div id="article">
+					<div id="articleText">
+						<h3>Voronoi</h3>
+						<ul>
+							<li><strong>Type:</strong> Generator</li>
+						</ul>
+						<p>This tool generates a random heightmap consisting of a series of mountain-like peaks using a Voronoi diagram and applies it to the terrain object.</p>
+						<p id="hint"><strong>Hint:</strong> A <strong>preset</strong> can be used to automatically set all of the properties for this generator.</p>
+						<h4>Feature type</h4>
+						<p>The type of interpolation used, which influences the shape of the generated features. <strong>Mountains</strong> are interpolated linearly, <strong>Hills</strong> are interpolated along a sine curve and <strong>Plateaus</strong> are interpolated along a tangent curve.</p>
+						<h4>Cells [int]</h4>
+						<p>The number of cells the terrain object will be divided into in the Voronoi diagram.</p>
+						<h4>Features [float]</h4>
+						<p>The proportion of cells that will form rising features. The remaining cells are left flat. This is a floating point number in the range 0.0 - 1.0, where 0.0 results in no cells forming features and 1.0 results in all cells forming features.</p>
+						<h4>Scale [float]</h4>
+						<p>The extent to which features are scaled down based on their proximity to the next nearest feature. This is a floating point number in the range 0.0 - 1.0, where 0.0 results in no scaling and 1.0 results in the maximum amount of scaling.</p>
+						<h4>Blend [float]</h4>
+						<p>The resulting heightmap from this generator will be blended with the original heightmap by this amount. This is a floating point number in the range 0.0 - 1.0</p>
+					</div>
+					<div id="articleImage">
+						<img src="images/voronoi.jpg" />
+						<p>A terrain heightmap created with the Voronoi generator.</p>
+					</div>
+				</div>
+				<div id="article">
+					<div id="articleText">
+						<h3>Fractal</h3>
+						<ul>
+							<li><strong>Type:</strong> Generator</li>
+						</ul>
+						<p>This tool generates a random heightmap using the 'cloud' or 'plasma' fractal algorithm and applies it to the terrain object.</p>
+						<p id="hint"><strong>Hint:</strong> A <strong>preset</strong> can be used to automatically set all of the properties for this generator.</p>
+						<h4>Delta [float]</h4>
+						<p>This value affects the roughness of the generated terrain. This is a floating point number in the range 0.0 - 1.0, where a value of 0.0 results in a very smooth heightmap and a value of 1.0 results in an extremely noisy heightmap. Values close to 0.5 tend to work best.
+						<h4>Blend [float]</h4>
+						<p>The resulting heightmap from this generator will be blended with the original heightmap by this amount. This is a floating point number in the range 0.0 - 1.0</p>
+					</div>
+					<div id="articleImage">
+						<img src="images/fractal.jpg" />
+						<p>A terrain heightmap created with the fractal generator.</p>
+					</div>
+				</div>
+				<div id="article">
+					<div id="articleText">
+						<h3>Perlin</h3>
+						<ul>
+							<li><strong>Type:</strong> Generator</li>
+						</ul>
+						<p>This tool generates a random heightmap using Perlin noise and applies it to the terrain object.</p>
+						<p id="hint"><strong>Hint:</strong> A <strong>preset</strong> can be used to automatically set all of the properties for this generator.</p>
+						<h4>Frequency [int]</h4>
+						<p>The initial frequency used to generate Perlin noise. This value is doubled in every successive Octave. Lower frequency values result in smooth, rolling hills and higher vales resut in more jagged terrain.</p>
+						<h4>Amplitude [float]</h4>
+						<p>The initial amplitude used to generate Perlin noise. This value is halved in every successive Octave.</p>
+						<h4>Octaves [int]</h4>
+						<p>The number of octaves used to generate Perlin noise. More octaves result in more detailed terrain but take longer to process.</p>
+						<h4>Blend [float]</h4>
+						<p>The resulting heightmap from this generator will be blended with the original heightmap by this amount. This is a floating point number in the range 0.0 - 1.0</p>
+					</div>
+					<div id="articleImage">
+						<img src="images/perlin.jpg" />
+						<p>A terrain heightmap created with the Perlin generator.</p>
+					</div>
+				</div>
+				<div id="article">
+					<h3>Smooth</h3>
+					<ul>
+						<li><strong>Type:</strong> Filter</li>
+					</ul>
+					<p>This tool is a filter which applies smoothing to the terrain object repeatedly over a number of <strong>iterations</strong>.</p>
+					<h4>Iterations [int]</h4>
+					<p>The number of times this filter is applied.<p>
+					<h4>Blend [float]</h4>
+					<p>The resulting heightmap from this generator will be blended with the original heightmap by this amount. This is a floating point number in the range 0.0 - 1.0</p>
+				</div>
+				<div id="article">
+					<h3>Normalise</h3>
+					<ul>
+						<li><strong>Type:</strong> Filter</li>
+					</ul>
+					<p>This tool is a filter which normalises the terrain object by setting the highest point in the current terrain heightmap to the maximum and the lowest point to the minimum. All other points are interpolated between the maximum and minimum.</p>
+					<h4>Blend [float]</h4>
+					<p>The resulting heightmap from this generator will be blended with the original heightmap by this amount. This is a floating point number in the range 0.0 - 1.0</p>
+				</div>
+			</div>
+			<div id="superFooter">
+				<div id="column">
+					<h3>Terrain Toolkit</h3>
+					<ul>
+						<li><a href="index.html" target="_self">Home</a></li>
+						<li><a href="Support.html" target="_self">Support</a></li>
+					</ul>
+				</div>
+				<div id="column">
+					<h3>Manual</h3>
+					<ul>
+						<li><a href="Create.html" target="_self">Create</a></li>						<li><a href="Erode.html" target="_self">Erode</a></li>						<li><a href="Texture.html" target="_self">Texture</a></li>
+						<li><a href="Advanced.html" target="_self">Advanced</a></li>
+					</ul>
+				</div>
+				<div id="column">
+					<h3>&nbsp;</h3>
+					<ul>
+						<li><a href="APIReference.html" target="_self">API Reference</a></li>
+					</ul>
+				</div>
+				<div id="column">
+				</div>
+			</div>
+			<div id="footer">
+				<a href="http://sixtimesnothing.wordpress.com/" target="_blank"><div id="sixTimesNothingLogo"></div></a>
+			</div>
+		</div>
+	</body>
+</html>
